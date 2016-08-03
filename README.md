@@ -1,0 +1,2 @@
+# NSTimer_Runloop
+RunLoop解决timer在scrollview上的问题
