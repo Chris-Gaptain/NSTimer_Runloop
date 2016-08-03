@@ -51,6 +51,9 @@
     
     _timeLabel.text = [NSString stringWithFormat:@"%ld",_time];
     _time --;
+    if (_time < 0) {
+        [self.timer invalidate];
+    }
 }
 
 
