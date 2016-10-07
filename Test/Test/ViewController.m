@@ -2,12 +2,11 @@
 //  ViewController.m
 //  Test
 //
-//  Created by peidong on 16/8/3.
-//  Copyright © 2016年 Peidong. All rights reserved.
+//  Created by Chris Gaptain on 16/8/3.
+//  Copyright © 2016年 Chris Gaptain. All rights reserved.
 //
 
 #define kWidth self.view.frame.size.width
-
 #define kHeight self.view.frame.size.height
 
 #import "ViewController.h"
@@ -16,7 +15,6 @@
 {
     NSInteger _time;
 }
-
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) UILabel *timeLabel;
@@ -30,32 +28,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"%f,%f",self.view.frame.size.width,self.view.frame.size.height);
-    
     _time = 59;
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.timeLabel];
-    
     /*
      *  NSDefaultRunLoopMode    默认,空闲状态
      *  UITrackingRunLoopMode   scrollView滑动时
      *  NSRunLoopCommonModes    Mode集合
      *
      */
-    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeFired:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)timeFired:(NSTimer *)sender {
-    
     _timeLabel.text = [NSString stringWithFormat:@"%ld",_time];
     _time --;
     if (_time < 0) {
         [self.timer invalidate];
     }
 }
-
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
@@ -74,8 +66,6 @@
     }
     return _timeLabel;
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
